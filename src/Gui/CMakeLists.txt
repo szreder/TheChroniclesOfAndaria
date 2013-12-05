@@ -1,4 +1,5 @@
 set (gui_SOURCES
+	CustomWidgets/BarWidget.cpp
 	CustomWidgets/MyTaskbar.cpp
 
 	Elements/PlayerMarker.cpp
