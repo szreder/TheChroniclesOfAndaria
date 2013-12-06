@@ -7,6 +7,7 @@
 #include "Core/Containers/Player.h"
 #include "Core/Game.h"
 #include "Core/GameMaster.h"
+#include "Gui/CustomWidgets/HealthBar.h"
 #include "Gui/CustomWidgets/MyTaskbar.h"
 
 class GameMaster;
@@ -36,8 +37,7 @@ private:
 	GameMaster *gameMaster_;
 	QTextBrowser *log;
 
-	int currentEnemyHealth;
-	MyTaskbar *enemyHealthBar;
+	HealthBar *enemyHealthBar;
 	QLabel *enemyHealthLabel;
 
 	MyTaskbar *playerHealthBar;
