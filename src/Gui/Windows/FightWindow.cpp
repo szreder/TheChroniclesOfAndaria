@@ -56,8 +56,9 @@ FightWindow::FightWindow(Player *player, Enemy *enemy, GameMaster *gameMaster)
 
 	QLabel *playerNameLabel = new QLabel(player->name());
 
-	playerHealthBar = new MyTaskbar((qreal)player->healthCurrent() / player->healthMax(), player->regeneration() / player->healthMax(), Qt::red, Qt::green);
-	playerHealthLabel = new QLabel(QString::number(player->healthCurrent()) + "/" + QString::number(player->healthMax()));
+	playerHealthBar = new HealthBar(player->healthMax());
+	playerHealthBar->setHealth(player->healthCurrent());
+	playerHealthLabel = new QLabel(QString("%1/%2").arg(player->healthCurrent()).arg(player->healthMax()));
 	QHBoxLayout *playerHealthLayout = new QHBoxLayout();
 	playerHealthLayout->addWidget(playerNameLabel);
 	playerHealthLayout->addWidget(playerHealthBar);
@@ -142,8 +143,8 @@ void FightWindow::enemyAttack()
 	log->insertPlainText(QString::fromUtf8("Zadane obrażenia: ") + QString::number(damageReceived) + QString("\n"));
 
 	player_->setHealthCurrent(qMax(player_->healthCurrent() - damageReceived, 0));
-	playerHealthLabel->setText(QString::number(player_ ->healthCurrent()) + "/" + QString::number(player_->healthMax()));
-	playerHealthBar->fillFirst((qreal)player_->healthCurrent() / player_->healthMax());
+	playerHealthLabel->setText(QString("%1/%2").arg(player_ ->healthCurrent()).arg(player_->healthMax()));
+	playerHealthBar->setHealth(player_->healthCurrent());
 	this->repaint();
 
 	if (player_->healthCurrent() == 0) {

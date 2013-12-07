@@ -40,7 +40,7 @@ private:
 	HealthBar *enemyHealthBar;
 	QLabel *enemyHealthLabel;
 
-	MyTaskbar *playerHealthBar;
+	HealthBar *playerHealthBar;
 	QLabel *playerHealthLabel;
 
 	QPushButton *largePotionButton;
